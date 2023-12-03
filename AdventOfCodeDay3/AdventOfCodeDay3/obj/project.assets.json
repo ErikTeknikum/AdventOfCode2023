@@ -8,24 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Elev\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\erikf\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Elev\\source\\repos\\AdventOfCodeDay3\\AdventOfCodeDay3\\AdventOfCode2023.csproj",
+      "projectUniqueName": "C:\\Users\\erikf\\Documents\\GitHub\\AdventOfCode2023\\AdventOfCodeDay3\\AdventOfCodeDay3\\AdventOfCode2023.csproj",
       "projectName": "AdventOfCode2023",
-      "projectPath": "C:\\Users\\Elev\\source\\repos\\AdventOfCodeDay3\\AdventOfCodeDay3\\AdventOfCode2023.csproj",
-      "packagesPath": "C:\\Users\\Elev\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Elev\\source\\repos\\AdventOfCodeDay3\\AdventOfCodeDay3\\obj\\",
+      "projectPath": "C:\\Users\\erikf\\Documents\\GitHub\\AdventOfCode2023\\AdventOfCodeDay3\\AdventOfCodeDay3\\AdventOfCode2023.csproj",
+      "packagesPath": "C:\\Users\\erikf\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\erikf\\Documents\\GitHub\\AdventOfCode2023\\AdventOfCodeDay3\\AdventOfCodeDay3\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Elev\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\erikf\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -66,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 
 //Call which day you would like to solve
 //↓↓↓↓↓↓
-
+Day2Part1AndPart2();
 //↑↑↑↑↑↑
 
 void Day1Part1()
@@ -107,14 +109,47 @@ void Day1Part2()
     }
 }
 
-void Day2Part1()
+void Day2Part1AndPart2()
 {
-    string[] input = File.ReadAllLines("day2.txt");
-}
 
-void Day2Part2()
-{
-    string[] input = File.ReadAllLines("day2.txt");
+    var input = File.ReadAllLines("day2.txt").ToList();
+
+    long answer1 = 0, answer2 = 0;
+
+    var S = File.ReadAllLines("day2.txt").ToList();
+
+    foreach (var s in S)
+    {
+        var s1 = s.Split(": ");
+        var game = int.Parse(s1[0].Split(" ")[1]);
+        bool possible = true;
+        int maxred = 0, maxgreen = 0, maxblue = 0;
+        foreach (var s2 in s1[1].Split("; "))
+        {
+            int blue = 0;
+            int green = 0;
+            int red = 0;
+
+            foreach (var s3 in s2.Split(", "))
+            {
+
+                var s4 = s3.Split(" ");
+                if (s4[1] == "red") red = int.Parse(s4[0]);
+                if (s4[1] == "green") green = int.Parse(s4[0]);
+                if (s4[1] == "blue") blue = int.Parse(s4[0]);
+            }
+            if (red > 12 || green > 13 || blue > 14) possible = false;
+            if (maxred < red) maxred = red;
+            if (maxgreen < green) maxgreen = green;
+            if (maxblue < blue) maxblue = blue;
+
+        }
+        if (possible) answer1 += game;
+        answer2 += maxred * maxgreen * maxblue;
+
+    }
+    Console.WriteLine($"Part1 = {answer1}");
+    Console.WriteLine($"Part2 = {answer2}");
 }
 
 void Day3Part1()
