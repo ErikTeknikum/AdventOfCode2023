@@ -166,26 +166,50 @@ void Day3Part1()
     int indexNum = 0;
     int indexSpec = 0;
 
+    int posOfChar = 0;
+    char charCheck = '\0';
+
     for (int y = 0; y < input.Length; y++)
     {
         string line = input[y];
         string[] mutLine = Regex.Split(line, @"\D+");
 
-        for(int x = 0; x < mutLine.Length; x++)
+        for (int x = 0; x < mutLine.Length; x++)
         {
             var value = mutLine[x];
+            
             if (!string.IsNullOrEmpty(value))
             {
+                charCheck = value.ToString()[0];
+                //Console.WriteLine($"value.ToString: {value.ToString()[0]} charCheck: {charCheck} value:{value}");
+
+                if (!completeNum.Any())
+                {
+                    while (line[posOfChar] != charCheck)
+                    {
+                        posOfChar++;
+                    }
+
+                }
+                else
+                {
+                    while (line[posOfChar] != charCheck && posOfChar < completeNum[^1].Item1 + 2)
+                    {
+                        posOfChar++;
+                    }
+                }
+
+                
                 int valueNum = int.Parse(value);
 
-                completeNum.Add(Tuple.Create(indexNum, lineNum, valueNum, valueNum.ToString().Length - 1)) ; //x, y, number, length of number
+                completeNum.Add(Tuple.Create(posOfChar, lineNum, valueNum, valueNum.ToString().Length - 1)) ; //x, y, number, length of number
 
-                indexNum += value.Length;
+                
             }
-            
+            posOfChar = 0;
         }
-        indexNum = 0;
         lineNum++;
+
         /*foreach (char chars in line)
         {
 
