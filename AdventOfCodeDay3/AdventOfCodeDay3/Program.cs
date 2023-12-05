@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 
 //Call which day you would like to solve
 //↓↓↓↓↓↓
-Day2Part1AndPart2();
+Day3Part1();
 //↑↑↑↑↑↑
 
 void Day1Part1()
@@ -155,6 +157,78 @@ void Day2Part1AndPart2()
 void Day3Part1()
 {
     string[] input = File.ReadAllLines("day3.txt");
+
+    var numLoc = new List<Tuple<int, int, int>>(); // index, row, num
+    var specLoc = new List<Tuple<int, int>>(); // index, row
+    var completeNum = new List<Tuple<int, int, int, int>>(); //index, num, length of number - 1 (to see if symbol is adjacent to index)
+  
+    int lineNum = 0;
+    int indexNum = 0;
+    int indexSpec = 0;
+
+    for (int y = 0; y < input.Length; y++)
+    {
+        string line = input[y];
+        string[] mutLine = Regex.Split(line, @"\D+");
+
+        for(int x = 0; x < mutLine.Length; x++)
+        {
+            var value = mutLine[x];
+            if (!string.IsNullOrEmpty(value))
+            {
+                int valueNum = int.Parse(value);
+
+                completeNum.Add(Tuple.Create(indexNum, lineNum, valueNum, valueNum.ToString().Length - 1)) ; //x, y, number, length of number
+
+                indexNum += value.Length;
+            }
+            
+        }
+        indexNum = 0;
+        lineNum++;
+        /*foreach (char chars in line)
+        {
+
+            if (chars == '1' || chars == '2' || chars == '3' || chars == '4' || chars == '5' || chars == '6' || chars == '7' || chars == '8' || chars == '9' || chars == '0')
+            {
+                numLoc.Add(Tuple.Create(indexNum, lineNum, CharUnicodeInfo.GetDecimalDigitValue(chars)));
+
+                //Console.WriteLine($"Number found: {chars}! index:{indexNum} row:{lineNum} \n");
+                //Console.WriteLine();
+                
+
+            } else if(chars == '*' || chars == '&' || chars == '/' || chars == '#' || chars == '%' || chars == '$' || chars == '+' || chars == '=' || chars == '@')
+            {
+                specLoc.Add(Tuple.Create(indexSpec, lineNum));
+                //Console.WriteLine($"Symbol found: {chars}! index:{indexSpec} row:{lineNum} \n");
+                //Console.WriteLine();
+            }
+
+            indexNum++;
+            indexSpec++;
+        }
+        */
+        //indexNum = 0;
+        //indexSpec = 0;
+        //lineNum++;
+    }
+
+    for(int i = 0;  i < completeNum.Count; i++)
+    {
+        Console.WriteLine($"completeNum: {completeNum[i]}");
+    }
+    /*
+    Console.WriteLine("--------------Everything in numLoc----------------");
+    for (int i = 0; i < numLoc.Count; i++)
+    {
+        Console.WriteLine($"Number at index: {numLoc[i]}");
+    }
+    Console.WriteLine("\n\n\n\n\n\n--------------Everything in specLoc---------------");
+    for (int i = 0; i < specLoc.Count; i++)
+    {
+        Console.WriteLine($"Symbol at index: {specLoc[i]}");
+    }
+    */
 }
 
 void Day3Part2()
